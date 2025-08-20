@@ -1,0 +1,2 @@
+// Add this line in Program.cs after AddDbContext to register repository DI:
+builder.Services.AddScoped<EmployeeManagementApi.Repositories.IEmployeeRepository, EmployeeManagementApi.Repositories.EmployeeRepository>();
