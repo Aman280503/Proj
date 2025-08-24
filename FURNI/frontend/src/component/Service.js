@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
+import { productsApi } from "../api";
 export default function Sofa() {
 
   const [sofas, setSofas] = useState([]);
 
   useEffect(() => {
-    axios.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
+    productsApi.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
       .then(response => {
         const sofaItems = response.data.filter(product => product.category== 'sofa');
         setSofas(sofaItems);

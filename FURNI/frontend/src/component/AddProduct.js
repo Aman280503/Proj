@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import  { useEffect, useState } from 'react';
+import { productsApi } from "../api";
 
 export default function AddProduct({ onProductAdded, editingProduct, onUpdateFinished }) {
     const [formData, setFormData] = useState({
@@ -37,11 +37,11 @@ export default function AddProduct({ onProductAdded, editingProduct, onUpdateFin
 
         try {
             if (editingProduct) {
-                await axios.put(`https://684be268ed2578be881cd84b.mockapi.io/apk/${editingProduct.id}`, formData);
+                await productsApi.put(`https://684be268ed2578be881cd84b.mockapi.io/apk/${editingProduct.id}`, formData);
                 alert('Product Updated Successfully!');
                 onUpdateFinished();
             } else {
-                await axios.post('https://684be268ed2578be881cd84b.mockapi.io/apk', formData);
+                await productsApi.post('https://684be268ed2578be881cd84b.mockapi.io/apk', formData);
                 alert('Product Added Successfully!');
                 onProductAdded();
             }

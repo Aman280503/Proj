@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { productsApi } from "../api";
+import { feedbackApi } from "../api";
 import { useDispatch } from 'react-redux';
 import { addtocart } from '../store/slice/cart';
 import { addwish } from '../store/slice/wishlist';
@@ -17,7 +18,7 @@ export default function ProductDetail() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`https://684be268ed2578be881cd84b.mockapi.io/apk/${id}`)
+        productsApi.get(`https://684be268ed2578be881cd84b.mockapi.io/apk/${id}`)
             .then(response => {
                 setProduct(response.data);
             })
@@ -45,7 +46,7 @@ export default function ProductDetail() {
         }
 
         try {
-            await axios.post('https://68230c9bb342dce8005070e5.mockapi.io/furni', {
+            await feedbackApi.post('https://68230c9bb342dce8005070e5.mockapi.io/furni', {
                 userName: username,
                 userEmail: email,
                 productName: product.name,

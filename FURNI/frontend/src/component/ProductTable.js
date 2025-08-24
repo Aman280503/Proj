@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import AddProduct from './AddProduct';
 
+import AddProduct from './AddProduct';
+import { productsApi } from "../api";
 export default function ProductTable() {
     const [products, setProducts] = useState([]);
     const [editingProduct, setEditingProduct] = useState(null);
@@ -9,7 +9,7 @@ export default function ProductTable() {
 
     const fetchProducts = async () => {
         try {
-            const res = await axios.get('https://684be268ed2578be881cd84b.mockapi.io/apk');
+            const res = await productsApi.get('https://684be268ed2578be881cd84b.mockapi.io/apk');
 
             // Clean data: ensure all required fields exist, set defaults if missing
             const cleanedProducts = res.data.map(product => ({
@@ -35,7 +35,7 @@ export default function ProductTable() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://684be268ed2578be881cd84b.mockapi.io/apk/${id}`);
+            await productsApi.delete(`https://684be268ed2578be881cd84b.mockapi.io/apk/${id}`);
             fetchProducts();
             alert('Product Deleted Successfully');
         } catch (err) {

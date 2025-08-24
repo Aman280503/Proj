@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+
+import { productsApi } from "../api";
 import { Link } from 'react-router-dom';
 
 export default function Shop() {
@@ -7,7 +8,7 @@ export default function Shop() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
+    productsApi.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
       .then(response => {
         setProducts(response.data);
       })

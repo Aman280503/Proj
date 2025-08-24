@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import  { useState } from 'react';
 
+import { feedbackApi } from "../api";
 export default function Contact() {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -19,7 +19,7 @@ export default function Contact() {
         e.preventDefault();
 
         try {
-            await axios.post('https://68230c9bb342dce8005070e5.mockapi.io/furni', {
+            await feedbackApi.post('https://68230c9bb342dce8005070e5.mockapi.io/furni', {
                 id: Date.now(),
                 userName: `${formData.firstName} ${formData.lastName}`,
                 userEmail: formData.email,

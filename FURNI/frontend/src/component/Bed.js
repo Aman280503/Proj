@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { productsApi } from "../api";
 import { Link } from 'react-router-dom';
 
 export default function Bed() {
@@ -7,7 +7,7 @@ export default function Bed() {
   const [beds, setBeds] = useState([]);
 
   useEffect(() => {
-    axios.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
+    productsApi.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
       .then(response => {
         console.log(response.data); 
         const bedItems = response.data.filter(product => product.category == 'bed');

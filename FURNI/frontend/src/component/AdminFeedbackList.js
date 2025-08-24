@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import  { useEffect, useState } from 'react';
+import { feedbackApi } from "../api";
 
 export default function AdminFeedbackList() {
     const [feedbacks, setFeedbacks] = useState([]);
@@ -8,7 +8,7 @@ export default function AdminFeedbackList() {
     // ✅ Fetch Feedbacks
     const fetchFeedbacks = async () => {
         try {
-            const res = await axios.get('https://68230c9bb342dce8005070e5.mockapi.io/furni');
+            const res = await feedbackApi.get('https://68230c9bb342dce8005070e5.mockapi.io/furni');
             setFeedbacks(res.data);
         } catch (error) {
             console.error('Error fetching feedbacks:', error);
@@ -41,7 +41,7 @@ export default function AdminFeedbackList() {
         try {
             await Promise.all(
                 selectedFeedbacks.map(id =>
-                    axios.delete(`https://68230c9bb342dce8005070e5.mockapi.io/furni/${id}`)
+                    feedbackApi.delete(`https://68230c9bb342dce8005070e5.mockapi.io/furni/${id}`)
                 )
             );
 

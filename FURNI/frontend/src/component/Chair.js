@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { productsApi } from "../api";
 import { Link } from 'react-router-dom';
 
 export default function Chair() {
@@ -7,7 +7,7 @@ export default function Chair() {
   const [chairs, setChairs] = useState([]);
 
   useEffect(() => {
-    axios.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
+    productsApi.get('https://684be268ed2578be881cd84b.mockapi.io/apk')
       .then(response => {
         const chairItems = response.data.filter(product => product.category === 'chair');
         setChairs(chairItems);
