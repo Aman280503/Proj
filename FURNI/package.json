@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@stripe/stripe-js": "^7.4.0",
-    "react-icons": "^5.5.0"
-  }
-}
